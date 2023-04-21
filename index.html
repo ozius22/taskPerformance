@@ -36,14 +36,14 @@
         age = prompt("Kindly enter your age: "); 
 
         if (age === null) {
-          alert("You cancelled");
+          alert("Cancelled");
           break;
         } else if (age === "") {
-          alert("Please enter your age."); 
+          alert("Enter your age."); 
         } else if (isNaN(age)) {
-          alert("Please enter a valid number.");
+          alert("Enter a valid number.");
         } else if (age <= 0) {
-          alert("Please enter a valid age.");   
+          alert("Enter a valid age.");   
         }
       } while (age === "" || isNaN(age) || age <= 0);
 
