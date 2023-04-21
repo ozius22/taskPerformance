@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Performance</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="verifyAge()">
+
+  <header>
+    <h1>Task Performance</h1>
+  </header>
+
+  <div class="container">
+    <button id="a">Print 0 - 30</button>
+    <button id="b">Print even 0 - 40</button>
+    <button id="c">Print 3 multiples 40 - 10</button>
+  </div>
+
+  <section></section>
+
+  <footer>
+    <p>Submitted by: Luis Suizo</p>
+    <p>Submitted to: Mr. Vincent Bryan Faulve Calija</p>
+  </footer>
+</body>
+
+<script>
+  //displays a dialogue box confirming a user is 25 years old and up.
+  let age;
+    function verifyAge() {
+      do {
+        age = prompt("Kindly enter your age: "); 
+
+        if (age === null) {
+          alert("You cancelled");
+          break;
+        } else if (age === "") {
+          alert("Please enter your age."); 
+        } else if (isNaN(age)) {
+          alert("Please enter a valid number.");
+        } else if (age <= 0) {
+          alert("Please enter a valid age.");   
+        }
+      } while (age === "" || isNaN(age) || age <= 0);
+
+      if (age !== null) {
+        if (age >= 25) {
+          alert("Your age is 25 years old and up.");
+        } else {
+          alert("You are below 25 years old.");
+        }
+
+        //displays a dialog box confirming a user entered a number less than 100
+        if (age === 100) {
+          alert("Congratulations! You are 100 years old.");
+        } else if (age > 100) {
+          alert("The entered number is " +age+ ". It is above 100.");
+        } else if (age < 100) {
+          alert("The entered number is " +age+ ". It is less than 100.");
+        }
+      }
+    }
+
+  let numberContainer;
+  let printButton;
+
+  //prints the numbers 0-30, one number per line. 
+  printButton = document.getElementById('a');
+  printButton.addEventListener('click', () => {
+    if (numberContainer) {
+      const sectionElement = document.querySelector('body > section');
+      if (sectionElement) {
+        sectionElement.removeChild(numberContainer);
+      }
+    }
+
+    numberContainer = document.createElement('div');
+
+    for (let i = 0; i <= 30; i++) {
+      const textNode = document.createTextNode(i);
+      numberContainer.appendChild(textNode);
+      const br = document.createElement('br');
+      numberContainer.appendChild(br);
+    }
+
+    const sectionElement = document.querySelector('body > section');
+    if (sectionElement) {
+      sectionElement.appendChild(numberContainer);
+    } else {
+      const newSectionElement = document.createElement('section');
+      newSectionElement.appendChild(numberContainer);
+      document.body.appendChild(newSectionElement);
+    }
+  });
+
+  //prints only the even values from 0-40, one number per line.
+  printButton = document.getElementById('b');
+  printButton.addEventListener('click', () => {
+    if (numberContainer) {
+      const sectionElement = document.querySelector('body > section');
+      if (sectionElement) {
+        sectionElement.removeChild(numberContainer);
+      }
+    }
+
+    numberContainer = document.createElement('div');
+
+    for (let i = 0; i <= 40; i++) {
+      if (i % 2 === 0) {
+        const textNode = document.createTextNode(i);
+        numberContainer.appendChild(textNode);
+        const br = document.createElement('br');
+        numberContainer.appendChild(br);
+      }
+    }
+
+    const sectionElement = document.querySelector('body > section');
+    if (sectionElement) {
+      sectionElement.appendChild(numberContainer);
+    } else {
+      const newSectionElement = document.createElement('section');
+      newSectionElement.appendChild(numberContainer);
+      document.body.appendChild(newSectionElement);
+    }
+  });
+
+  //prints the numbers 40 - 10 in descending order, but only if the numbers are multiples of 3.
+  printButton = document.getElementById('c');
+  printButton.addEventListener('click', () => {
+    if (numberContainer) {
+      const sectionElement = document.querySelector('body > section');
+      if (sectionElement) {
+        sectionElement.removeChild(numberContainer);
+      }
+    }
+
+    numberContainer = document.createElement('div');
+
+    for (let i = 40; i >= 10; i--) {
+      if (i % 3 === 0) {
+        const textNode = document.createTextNode(i);
+        numberContainer.appendChild(textNode);
+        const br = document.createElement('br');
+        numberContainer.appendChild(br);
+      }
+    }
+
+    const sectionElement = document.querySelector('body > section');
+    if (sectionElement) {
+      sectionElement.appendChild(numberContainer);
+    } else {
+      const newSectionElement = document.createElement('section');
+      newSectionElement.appendChild(numberContainer);
+      document.body.appendChild(newSectionElement);
+    }
+  });
+</script>
+</html>
