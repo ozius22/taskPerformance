@@ -72,7 +72,7 @@
   printButton = document.getElementById('a');
   printButton.addEventListener('click', () => {
     if (numberContainer) {
-      const sectionElement = document.querySelector('body > section');
+      let sectionElement = document.querySelector('body > section');
       if (sectionElement) {
         sectionElement.removeChild(numberContainer);
       }
@@ -81,27 +81,21 @@
     numberContainer = document.createElement('div');
 
     for (let i = 0; i <= 30; i++) {
-      const textNode = document.createTextNode(i);
+      let textNode = document.createTextNode(i);
       numberContainer.appendChild(textNode);
-      const br = document.createElement('br');
+      let br = document.createElement('br');
       numberContainer.appendChild(br);
     }
 
-    const sectionElement = document.querySelector('body > section');
-    if (sectionElement) {
-      sectionElement.appendChild(numberContainer);
-    } else {
-      const newSectionElement = document.createElement('section');
-      newSectionElement.appendChild(numberContainer);
-      document.body.appendChild(newSectionElement);
-    }
+    let sectionElement = document.querySelector('body > section');
+    sectionElement.appendChild(numberContainer);
   });
 
   //prints only the even values from 0-40, one number per line.
   printButton = document.getElementById('b');
   printButton.addEventListener('click', () => {
     if (numberContainer) {
-      const sectionElement = document.querySelector('body > section');
+      let sectionElement = document.querySelector('body > section');
       if (sectionElement) {
         sectionElement.removeChild(numberContainer);
       }
@@ -111,28 +105,22 @@
 
     for (let i = 0; i <= 40; i++) {
       if (i % 2 === 0) {
-        const textNode = document.createTextNode(i);
+        let textNode = document.createTextNode(i);
         numberContainer.appendChild(textNode);
-        const br = document.createElement('br');
+        let br = document.createElement('br');
         numberContainer.appendChild(br);
       }
     }
 
-    const sectionElement = document.querySelector('body > section');
-    if (sectionElement) {
-      sectionElement.appendChild(numberContainer);
-    } else {
-      const newSectionElement = document.createElement('section');
-      newSectionElement.appendChild(numberContainer);
-      document.body.appendChild(newSectionElement);
-    }
+    let sectionElement = document.querySelector('body > section');
+    sectionElement.appendChild(numberContainer);
   });
 
   //prints the numbers 40 - 10 in descending order, but only if the numbers are multiples of 3.
   printButton = document.getElementById('c');
   printButton.addEventListener('click', () => {
     if (numberContainer) {
-      const sectionElement = document.querySelector('body > section');
+      let sectionElement = document.querySelector('body > section');
       if (sectionElement) {
         sectionElement.removeChild(numberContainer);
       }
@@ -142,21 +130,15 @@
 
     for (let i = 40; i >= 10; i--) {
       if (i % 3 === 0) {
-        const textNode = document.createTextNode(i);
+        let textNode = document.createTextNode(i);
         numberContainer.appendChild(textNode);
-        const br = document.createElement('br');
+        let br = document.createElement('br');
         numberContainer.appendChild(br);
       }
     }
 
-    const sectionElement = document.querySelector('body > section');
-    if (sectionElement) {
-      sectionElement.appendChild(numberContainer);
-    } else {
-      const newSectionElement = document.createElement('section');
-      newSectionElement.appendChild(numberContainer);
-      document.body.appendChild(newSectionElement);
-    }
+    let sectionElement = document.querySelector('body > section');
+    sectionElement.appendChild(numberContainer);
   });
 </script>
 </html>
