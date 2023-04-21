@@ -15,9 +15,10 @@
   </header>
 
   <div class="container">
+    <button id="d">Enter a number less than 100</button>
     <button id="a">Print 0 - 30</button>
     <button id="b">Print even 0 - 40</button>
-    <button id="c">Print 3 multiples 40 - 10</button>
+    <button id="c">Print 3 multiples 40 - 10</button> 
   </div>
 
   <section></section>
@@ -30,43 +31,59 @@
 
 <script>
   //displays a dialogue box confirming a user is 25 years old and up.
-  let age;
-    function verifyAge() {
-      do {
-        age = prompt("Kindly enter your age: "); 
+  function verifyAge() {
+    let age = confirm("Are you 25 years old and up?");
 
-        if (age === null) {
-          alert("Cancelled");
-          break;
-        } else if (age === "") {
-          alert("Enter your age."); 
-        } else if (isNaN(age)) {
-          alert("Enter a valid number.");
-        } else if (age <= 0) {
-          alert("Enter a valid age.");   
-        }
-      } while (age === "" || isNaN(age) || age <= 0);
-
-      if (age !== null) {
-        if (age >= 25) {
-          alert("Your age is 25 years old and up.");
-        } else {
-          alert("You are below 25 years old.");
-        }
-
-        //displays a dialog box confirming a user entered a number less than 100
-        if (age === 100) {
-          alert("Congratulations! You are 100 years old.");
-        } else if (age > 100) {
-          alert("The entered number is " +age+ ". It is above 100.");
-        } else if (age < 100) {
-          alert("The entered number is " +age+ ". It is less than 100.");
-        }
-      }
-    }
+    if (age) {
+      alert("Great. You are 25 years old or up.");
+    } else {
+      alert("You might be below 25 years old.");
+    } 
+  }
 
   let numberContainer;
   let printButton;
+
+  //displays a dialog box confirming a user entered a number less than 100
+  printButton = document.getElementById('d');
+  printButton.addEventListener('click', () => {
+    let num;
+      do {
+        num = prompt("Enter a number: "); 
+
+        if (num === null) {
+          alert("Cancelled");
+          break;
+        } else if (num === "") {
+          alert("Enter a number."); 
+        } else if (isNaN(num)) {
+          alert("Enter a valid number.");
+        }
+      } while (num === "" || isNaN(num));
+
+      if (num !== null) {
+        if (num > 100) {
+          alert("The number you entered is more than 100.");
+        } else if (num < 100) {
+            alert("The number you entered is less than 100.");
+            if (numberContainer) {
+              let sectionElement = document.querySelector('body > section');
+              if (sectionElement) {
+                sectionElement.removeChild(numberContainer);
+              }
+            }
+
+            numberContainer = document.createElement('div');
+            let textNode = document.createTextNode(num);
+            numberContainer.appendChild(textNode);
+
+            let sectionElement = document.querySelector('body > section');
+            sectionElement.appendChild(numberContainer);
+        } else {
+          alert("The number you entered is exactly 100.")
+        }
+      }
+  });
 
   //prints the numbers 0-30, one number per line. 
   printButton = document.getElementById('a');

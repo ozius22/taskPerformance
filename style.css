@@ -32,6 +32,10 @@ div{
   gap: 10px; 
 }
 
+#d {
+  grid-column: span 3;
+}
+
 button {
   padding: 10px 20px;
   background-image: linear-gradient(to right, #007bff, #e83e8c);
